@@ -2,14 +2,16 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"strings"
 )
 
 func main() {
 	mux := http.NewServeMux()
+	func ()
 	mux.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
-		fmt.Fprint(res, "Hello "+strings.Split(req.URL.Path, "/")[1])
+		io.WriteString(res, "Hello "+strings.Split(req.URL.Path, "/")[1])
 	})
 	server := http.Server{
 		Addr:    "localhost:8000",
